@@ -1,0 +1,38 @@
+# Number of Images
+16
+# Is inverse exposure time?
+1
+# Filename exposure time
+MemorialDataset/memorial0061.png
+0.03125
+MemorialDataset/memorial0062.png
+0.0625
+MemorialDataset/memorial0063.png
+0.125
+MemorialDataset/memorial0064.png
+0.25
+MemorialDataset/memorial0065.png
+0.5
+MemorialDataset/memorial0066.png
+1
+MemorialDataset/memorial0067.png
+2
+MemorialDataset/memorial0068.png
+4
+MemorialDataset/memorial0069.png
+8
+MemorialDataset/memorial0070.png
+16
+MemorialDataset/memorial0071.png
+32
+MemorialDataset/memorial0072.png
+64
+MemorialDataset/memorial0073.png
+128
+MemorialDataset/memorial0074.png
+256
+MemorialDataset/memorial0075.png
+512
+MemorialDataset/memorial0076.png
+1024
+
