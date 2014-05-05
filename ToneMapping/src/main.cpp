@@ -13,6 +13,7 @@ int sigmaLightSlider;
 
 cv::Mat hdrImage;
 cv::Mat result;
+cv::Mat downResult;
 
 void updateToneMappedImage(int, void*) {
 
@@ -55,7 +56,8 @@ void updateToneMappedImage(int, void*) {
 	if(max - min > 1e-5) result = (result - min) / (max - min);
 	cv::pow(result, 1.0f / gamma, result);
 	
-	cv::imshow("Reinhard's Tone Mapping Algorithm", result);
+	cv::resize(result, downResult, downResult.size());
+	cv::imshow("Reinhard's Tone Mapping Algorithm", downResult);
 
 }
 
@@ -68,6 +70,8 @@ int main(int argc, char **argv) {
 
 	double min, max;
 	hdrImage = cv::hdrImread(argv[1], CV_LOAD_IMAGE_ANYDEPTH | CV_LOAD_IMAGE_COLOR);
+	downResult = cv::Mat(512, 512, hdrImage.type());
+
 	cv::minMaxLoc(hdrImage, &min, &max);
 	if(max - min > 1e-5) hdrImage = (hdrImage - min) / (max - min);
 	cv::pow(hdrImage, 1.0f / gamma, hdrImage);
@@ -75,8 +79,8 @@ int main(int argc, char **argv) {
 	updateToneMappedImage(0, 0);
 	
 	cv::namedWindow("Reinhard's Tone Mapping Algorithm");
-	cv::createTrackbar("Gamma", "Reinhard's Tone Mapping Algorithm", &gammaSlider, 7, updateToneMappedImage);
-	cv::createTrackbar("Intensity", "Reinhard's Tone Mapping Algorithm", &intensitySlider, 16, updateToneMappedImage);
+	cv::createTrackbar("Gamma", "Reinhard's Tone Mapping Algorithm", &gammaSlider, 14, updateToneMappedImage);
+	cv::createTrackbar("Intensity", "Reinhard's Tone Mapping Algorithm", &intensitySlider, 24, updateToneMappedImage);
 	cv::createTrackbar("Color.adpt", "Reinhard's Tone Mapping Algorithm", &sigmaColorSlider, 10, updateToneMappedImage);
 	cv::createTrackbar("Light.adpt", "Reinhard's Tone Mapping Algorithm", &sigmaLightSlider, 10, updateToneMappedImage);
 
