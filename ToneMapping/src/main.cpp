@@ -6,10 +6,10 @@ float intensity = 0;
 float sigmaColor = 0;
 float sigmaLight = 1;
 
-int intensitySlider;
-int gammaSlider;
-int sigmaColorSlider;
-int sigmaLightSlider;
+int intensitySlider = 8;
+int gammaSlider = 7;
+int sigmaColorSlider = 0;
+int sigmaLightSlider = 0;
 
 cv::Mat hdrImage;
 cv::Mat result;
@@ -58,7 +58,7 @@ void updateToneMappedImage(int, void*) {
 	
 	cv::resize(result, downResult, downResult.size());
 	cv::imshow("Reinhard's Tone Mapping Algorithm", downResult);
-
+	
 }
 
 int main(int argc, char **argv) {
